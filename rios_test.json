@@ -1,0 +1,389 @@
+{
+"annotations": {
+  "list": [
+    {
+      "builtIn": 1,
+      "datasource": "-- Grafana --",
+      "enable": true,
+      "hide": true,
+      "iconColor": "rgba(0, 211, 255, 1)",
+      "name": "Annotations & Alerts",
+      "type": "dashboard"
+    }
+  ]
+},
+"editable": true,
+"gnetId": null,
+"graphTooltip": 0,
+"id": 23,
+"iteration": 1643185539799,
+"links": [],
+"panels": [
+  {
+    "datasource": "Prometheus",
+    "fieldConfig": {
+      "defaults": {
+        "custom": {
+          "align": null
+        },
+        "mappings": [
+          {
+            "from": "",
+            "id": 0,
+            "operator": "",
+            "text": "Ok",
+            "to": "",
+            "type": 1,
+            "value": "1"
+          },
+          {
+            "from": "",
+            "id": 1,
+            "operator": "",
+            "text": "Faill",
+            "to": "",
+            "type": 1,
+            "value": "0"
+          },
+          {
+            "from": "",
+            "id": 2,
+            "operator": "",
+            "text": "Canceled",
+            "to": "",
+            "type": 1,
+            "value": "-1"
+          }
+        ],
+        "min": 0,
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "rgb(143, 143, 143)",
+              "value": null
+            },
+            {
+              "color": "dark-red",
+              "value": 0
+            },
+            {
+              "color": "semi-dark-green",
+              "value": 1
+            }
+          ]
+        },
+        "unit": "short"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 13,
+      "w": 23,
+      "x": 0,
+      "y": 0
+    },
+    "id": 4,
+    "interval": "",
+    "options": {
+      "colorMode": "background",
+      "graphMode": "area",
+      "justifyMode": "auto",
+      "orientation": "auto",
+      "reduceOptions": {
+        "calcs": [
+          "mean"
+        ],
+        "fields": "",
+        "values": false
+      }
+    },
+    "pluginVersion": "7.0.5",
+    "targets": [
+      {
+        "expr": "default_jenkins_builds_last_build_result{repo=\"$repo_name\"}",
+        "format": "time_series",
+        "instant": true,
+        "interval": "",
+        "intervalFactor": 10,
+        "legendFormat": "{{jenkins_job}}",
+        "refId": "A"
+      }
+    ],
+    "timeFrom": null,
+    "timeShift": null,
+    "title": "Panel Title",
+    "transformations": [
+      {
+        "id": "filterFieldsByName",
+        "options": {
+          "include": {
+            "names": [
+              "Robotics/rios/multibranch-example/production",
+              "Robotics/rios/sonar-test",
+              "Robotics/rios/win-lin-pipeline",
+              "Robotics/rios/coriemulator",
+              "Robotics/rios/multibranch-example/release%2F1.5",
+              "Robotics/rios/lib-timer",
+              "Robotics/rios/multibranch-example/jira-123-test1",
+              "Robotics/rios/multibranch-example/master",
+              "Robotics/rios/hello-conan",
+              "Robotics/rios/multibranch-example/development",
+              "Robotics/rios/sonar-builder"
+            ]
+          }
+        }
+      }
+    ],
+    "type": "stat"
+  },
+  {
+    "datasource": null,
+    "fieldConfig": {
+      "defaults": {
+        "custom": {
+          "align": "left"
+        },
+        "mappings": [
+          {
+            "from": "",
+            "id": 0,
+            "operator": "",
+            "text": "Ok",
+            "to": "",
+            "type": 1,
+            "value": "1"
+          },
+          {
+            "from": "",
+            "id": 1,
+            "operator": "",
+            "text": "Faill",
+            "to": "",
+            "type": 1,
+            "value": "0"
+          },
+          {
+            "from": "",
+            "id": 2,
+            "operator": "",
+            "text": "N/A",
+            "to": "",
+            "type": 1,
+            "value": "-1"
+          }
+        ],
+        "min": 0,
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "dark-yellow",
+              "value": null
+            },
+            {
+              "color": "#EAB839",
+              "value": -1
+            },
+            {
+              "color": "red",
+              "value": 0
+            },
+            {
+              "color": "green",
+              "value": 1
+            }
+          ]
+        },
+        "unit": "none"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 14,
+      "w": 24,
+      "x": 0,
+      "y": 13
+    },
+    "id": 5,
+    "interval": "",
+    "options": {
+      "showHeader": true,
+      "sortBy": [
+        {
+          "desc": false,
+          "displayName": "Value"
+        }
+      ]
+    },
+    "pluginVersion": "7.0.5",
+    "repeat": null,
+    "repeatDirection": "v",
+    "targets": [
+      {
+        "expr": "default_jenkins_builds_last_build_result{repo=\"$repo_name\",jenkins_job=~\"$br_name\"}",
+        "format": "table",
+        "instant": true,
+        "interval": "",
+        "intervalFactor": 1,
+        "legendFormat": "{{repo}}",
+        "refId": "B"
+      }
+    ],
+    "timeFrom": null,
+    "timeShift": null,
+    "title": "Panel Title",
+    "transformations": [
+      {
+        "id": "filterFieldsByName",
+        "options": {
+          "include": {
+            "names": [
+              "repo",
+              "Value",
+              "jenkins_job"
+            ]
+          }
+        }
+      }
+    ],
+    "transparent": true,
+    "type": "table"
+  }
+],
+"refresh": false,
+"schemaVersion": 25,
+"style": "dark",
+"tags": [],
+"templating": {
+  "list": [
+    {
+      "allValue": "",
+      "current": {
+        "selected": false,
+        "text": "All",
+        "value": "$__all"
+      },
+      "datasource": "Prometheus",
+      "definition": "default_jenkins_builds_last_build_result",
+      "hide": 0,
+      "includeAll": true,
+      "label": "Repo name ",
+      "multi": true,
+      "name": "repo_name",
+      "options": [],
+      "query": "default_jenkins_builds_last_build_result",
+      "refresh": 1,
+      "regex": "/.*repo=\"([r|R][i|I][o|O][s|S]*)\".*/",
+      "skipUrlSync": false,
+      "sort": 1,
+      "tagValuesQuery": "jenkins_job.$br_name",
+      "tags": [],
+      "tagsQuery": "",
+      "type": "query",
+      "useTags": true
+    },
+    {
+      "allValue": null,
+      "current": {
+        "selected": false,
+        "text": "develop",
+        "value": [
+          "develop"
+        ]
+      },
+      "hide": 0,
+      "includeAll": true,
+      "label": "Branch name",
+      "multi": true,
+      "name": "branch_name",
+      "options": [
+        {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        {
+          "selected": true,
+          "text": "develop",
+          "value": "develop"
+        },
+        {
+          "selected": false,
+          "text": "main",
+          "value": "main"
+        },
+        {
+          "selected": false,
+          "text": "master",
+          "value": "master"
+        },
+        {
+          "selected": false,
+          "text": "rc-",
+          "value": "rc-"
+        },
+        {
+          "selected": false,
+          "text": "wip-",
+          "value": "wip-"
+        },
+        {
+          "selected": false,
+          "text": "hotfix-",
+          "value": "hotfix-"
+        }
+      ],
+      "query": "develop,main,master,rc-,wip-,hotfix-",
+      "skipUrlSync": false,
+      "type": "custom"
+    },
+    {
+      "allValue": null,
+      "current": {
+        "selected": false,
+        "text": "All",
+        "value": "$__all"
+      },
+      "datasource": "Prometheus",
+      "definition": "default_jenkins_builds_last_build_result",
+      "hide": 0,
+      "includeAll": true,
+      "label": "Full project name",
+      "multi": true,
+      "name": "br_name",
+      "options": [],
+      "query": "default_jenkins_builds_last_build_result",
+      "refresh": 2,
+      "regex": "/.*jenkins_job=\"([^\"]*[r|R][i|I][o|O][s|S]*).*/",
+      "skipUrlSync": false,
+      "sort": 1,
+      "tagValuesQuery": "",
+      "tags": [],
+      "tagsQuery": "",
+      "type": "query",
+      "useTags": false
+    }
+  ]
+},
+"time": {
+  "from": "now-24h",
+  "to": "now"
+},
+"timepicker": {
+  "refresh_intervals": [
+    "10s",
+    "30s",
+    "1m",
+    "5m",
+    "15m",
+    "30m",
+    "1h",
+    "2h",
+    "1d"
+  ]
+},
+"timezone": "",
+"title": "RiOS_test",
+"version": 0
+}
